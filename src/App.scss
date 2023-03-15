@@ -1,0 +1,265 @@
+.App{
+  height: 100vh;
+  width: 100%;
+}
+*{
+  box-sizing: border-box;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+#root{
+  width: 100%;
+  min-height: 100vh;
+}
+.map{
+  &__wrapper{
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  &__popup{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    border: 3px solid blue;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  &__button{
+    background-color: blue;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    outline: none;
+    margin-left: 10px;
+  }
+  &__img{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    img{
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  &__points{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+.points{
+  &__wrapper{
+    position: absolute;
+    width: 10%;
+    height: 10%;
+  }
+}
+.people-position{
+  &__wrapper{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 100%;
+    .people{
+      background-image: url('../public/img/People_not active.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: bottom;
+      position: relative;
+      transition: 0.2s;
+      z-index: 99;
+      cursor: pointer;
+      &.--small{
+        height: 33%;
+        width: 20%;
+      }
+      &.--medium{
+        height: 66%;
+        width: 30%;
+      }
+      &.--large{
+        height: 100%;
+        width: 30%;
+      }
+      &:hover,
+      &:hover ~ .people{
+        background-image: url('../public/img/People_active.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}
+
+.gadgets{
+  &__wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__item-text{
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid blue;
+    text-align: center;
+    z-index: 9999;
+  }
+  &__item{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    &.--small{
+      width: 38%;
+      .fake{
+        position: absolute;
+        width: 64%;
+        height: 52%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-49%, -50%) rotate3d(-1.1, -1, 1, -77deg) scaleX(-1) scaleY(-1);
+        z-index: 9999;
+        &::after{
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #4ca8f9;
+            transform: rotate(180deg);
+            animation: wake 4s infinite;
+        }
+      }
+      @keyframes wake {
+        from{
+          height: 0;
+        }
+        to{
+          height: 100%;
+        }
+      }
+    }
+    &.--medium{
+      width: 36.7%;
+      &::after{
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 63%;
+        background-image: url('../public/img/laptop_fill.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: translate(2%, 16%);
+        z-index: 999;
+        animation: wake_laptop infinite 4s;
+      }
+      @keyframes wake_laptop {
+        from{
+          width: 0;
+        }
+        to{
+          width: 59%;
+        }
+      }
+    }
+    &.--large{
+      width: 25.7%;
+      &::after{
+        position: absolute;
+        content: '';
+        width: 0%;
+        height: 65%;
+        top: 12%;
+        left: 5%;
+        background-image: url('../public/img/laptop_fill.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 999;
+        animation: wake_display infinite 4s;
+      }
+      @keyframes wake_display {
+        from{
+          width: 0%;
+        }
+        to{
+          width: 93%;
+        }
+      }
+    }
+  }
+  &__item-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 999;
+  }
+}
+
+.servers{
+  &__wrapper{
+    position: absolute;
+    width: 5.4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  &__img-big{
+    width: 100%;
+  }
+}
+.map{
+  &__img{
+    .servers{
+      &__img{
+        width: 60.4%;
+      }
+    }
+  }
+}
+
+.lines{
+  &__wrapper{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    img{
+      position: absolute;
+    }
+  }
+}
