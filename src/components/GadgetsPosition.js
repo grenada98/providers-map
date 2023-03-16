@@ -5,7 +5,8 @@ import { DownloadData } from "./DATA";
 export const GadgetsPosition = (props) => {
     const addClass = [' --small', ' --medium', ' --large'];
     const gadgetName = ['phone', 'laptop', 'display'];
-
+    const animation = [{" .fake":{"::after": `animation-duration: `}},
+    ]
     return(
         <div className="gadgets__wrapper">
             {
@@ -13,10 +14,10 @@ export const GadgetsPosition = (props) => {
                     return(
                         <React.Fragment key={index}>
                             {props.count>index?<div className={"gadgets__item" + addClass[index]} style={item.position}>
-                                <div className="gadgets__item fake">
-                                </div>
-                                {item.download&&props.fourthStep?<div className="gadgets__item-text">Time: {item.download}</div>:null}
-                                {item.downloadMain&&props.fifthStep?<div className="gadgets__item-text">Time: {item.downloadMain}</div>:null}
+                                {index==0?<div className="gadgets__item fake">
+                                </div>:null}
+                                {item.download&&props.fourthStep?<div className="gadgets__item-text" style={item.positionText}>Time: {(item.download)}</div>:null}
+                                {item.downloadMain&&props.fifthStep?<div className="gadgets__item-text" style={item.positionText}>Time: {(item.downloadMain)}</div>:null}
                                 {props.thirdStep?<Line 
                                                         thirdStep={props.thirdStep} //условие для отображения линий к локальным серверам
                                                         fourthStep={props.fourthStep} //условие для отображения линий к главным серверам
